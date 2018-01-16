@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .container2 {
+            width: 900px;
+            height: 600px;
+            background-color: #f5a5a5;
+            position: relative;
+            margin: 0 auto;
+        }
+        .ball {
+            width: 60px;
+            height: 60px;
+            background-color: #3a73bd;
+            border-radius: 50%;
+            position: absolute;
+            text-align: center ;
+            line-height: 60px ;
+            
+        }
+        @keyframes fadein{
+            0%{
+                opacity: 0 ;
+            }
+            100%{
+                opacity: 1 ;
+            }
+        }
+        .ani{
+            opacity: 0 ;
+            animation: fadein 1s forwards ;
+        }
+    </style>
+    <style>
+        
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- <div class="ball"></div> -->
+    </div>
+    <button id="reset">reset</button>
+    <div class="container2"></div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <script>
+        var $container=$(".container");
+        var ar=[12,34,"hend",true,"jie.je"];
+        var ar2=[2,4,6,8,10];
+        
+        $container.append(ar.toString());
+        console.log(ar.length);
+        $container.append("</br>"+ar['2']+"</br>");
+        for(i=0;i<ar.length;i++){
+            console.log(ar[i]);
+        }
+        for (s in ar) {
+            console.log(s+" : "+ar[s]);
+        }
+        $container.append("-----------------</br>");
+
+        $container.append(ar2.toString()+"</br>");
+        ar2.push(12);
+        $container.append(ar2.toString()+"</br>");
+        $container.append(ar2.shift()+"</br>");
+        $container.append(ar2.toString()+"</br>");
+        ar2.unshift(0);
+        $container.append(ar2.toString()+"</br>");
+        var last=ar2.pop();
+        $container.append(ar2.toString()+"</br>");
+        $container.append("last: "+last+"</br>");
+        $container.append("-----------------</br>");
+
+        var br=ar2.slice();
+        var cr=[1,3,5,7,9];
+        br.push(14);
+        $container.append("br= "+br.toString()+"</br>");
+        $container.append(ar2.concat(cr)+"</br>");
+        $container.append("ar2="+ar2.toString()+"</br>");
+        $container.append("-----------------</br>");
+
+        var dr=[11,8,65,92,36,27];
+        dr.sort(function(a,b){
+            return a-b ;
+        });
+        $container.append(dr.toString()+"</br>");
+
+        dr.splice(1,0,"y","o","u");
+        console.log(dr);
+        var e=dr.splice(4,3);
+        console.log(dr);
+        console.log(e);
+
+        var la=[];
+        for(i=1;i<=42;i++){
+            la.push(i);
+        }
+        console.log(la);
+        
+
+        $("#reset").click(function(){
+            $(".container2").empty();
+            la.sort(function(a,b){
+                return Math.random()-0.5 ;
+            });
+            console.log(la);
+            for(i=0;i<6;i++){
+                $ball=$('<div class="ball ani"></div>');
+                $ball.css("animation-delay",i*0.5+"s");
+                $ball.css({"left":70*i+40,"top":40});
+                $ball.text(la[i]);
+                $(".container2").append($ball);
+
+            }
+        });
+        
+    </script>
+
+</body>
+
+</html>

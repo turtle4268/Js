@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 900px;
+            height: 600px;
+            background-color: #83caa9;
+            position: relative;
+            margin: 0 auto;
+        }
+        .container2 {
+            width: 900px;
+            height: 600px;
+            background-color: #f5a5a5;
+            position: relative;
+            margin: 0 auto;
+        }
+        .ball {
+            width: 60px;
+            height: 60px;
+            background-color: #3a73bd;
+            border-radius: 50%;
+            position: absolute;
+            text-align: center ;
+            line-height: 60px ;
+        }
+        .change{
+            background-color: pink ;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- <div class="ball"></div> -->
+    </div>
+
+    <div class="container2">
+        <!-- <div class="ball"></div> -->
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <script>
+        var $container=$(".container"),$ball ;
+        for (i = 0; i < 10; i++) {
+            $ball=$('<div class="ball"></div>');
+            $ball.css({"left":60*i,"top":40*i});
+            $ball.text(i+1);
+
+            $container.append($ball);
+        }
+        $(".ball").click(function(){
+            //alert($(this).text());
+            $(this).toggleClass("change");
+           // $(this).fadeOut();
+        });
+
+        var $container2=$(".container2"),x,y;
+        for (i = 0; i < 22; i++) {
+            $ball=$('<div class="ball"></div>');
+
+            x = i % 6;
+            y = parseInt(i/6);
+            $ball.css({"left":60*x,"top":60*y});
+            $ball.text(i+1);
+
+            $container2.append($ball);
+        }
+        $(".ball").click(function(){
+            //alert($(this).text());
+            $(this).toggleClass("change");
+           // $(this).fadeOut();
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 900px;
+            height: 600px;
+            background-color: #83caa9;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .ball {
+            width: 60px;
+            height: 60px;
+            background-color: #3a73bd;
+            border-radius: 50%;
+            position: absolute;
+            text-align: center;
+            line-height: 60px;
+        }
+
+        .change {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- <div class="ball"></div> -->
+    </div>
+
+    <svg version="1.1" id="s001" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        viewBox="0 0 960 560" style="enable-background:new 0 0 960 560;" xml:space="preserve">
+        <style type="text/css">
+            .st0 {
+                fill: #FFAF45;
+            }
+            .st1 {
+                fill: #FFFA40;
+            }
+            .st2 {
+                fill: #F2F2F2;
+            }
+        </style>
+        <g>
+            <polygon class="st0" points="120.1,68.9 135.5,108.1 177.1,101.8 150.9,134.8 177.1,167.7 135.5,161.4 120.1,200.7 104.7,161.4 
+       63,167.7 89.3,134.8 63,101.8 104.7,108.1 	" />
+        </g>
+        <g>
+            <polygon id="st1" class="st1" points="120,164.9 87.7,190.6 93.9,149.8 55.5,134.7 94,119.7 87.9,78.8 120.1,104.6 152.4,78.9 146.2,119.7 
+       184.6,134.8 146.2,149.9 152.3,190.7 	" />
+            <path class="st2" d="M88.6,80l30.9,24.7l0.6,0.5l0.6-0.5l31-24.6l-5.9,39.1l-0.1,0.8l0.7,0.3l36.8,14.5l-36.9,14.4l-0.7,0.3
+       l0.1,0.8l5.8,39.2l-30.9-24.7l-0.6-0.5l-0.6,0.5l-31,24.6l5.9-39.1l0.1-0.8l-0.7-0.3l-36.8-14.5l36.9-14.4l0.7-0.3l-0.1-0.8
+       L88.6,80 M87.2,77.7l6.2,41.7l-39.2,15.4l39.2,15.5l-6.3,41.7l33-26.2l32.9,26.3l-6.2-41.7l39.2-15.4l-39.2-15.5l6.3-41.7l-33,26.2
+       L87.2,77.7L87.2,77.7z" />
+        </g>
+    </svg>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <script>
+        var $container = $(".container"), $ball;
+
+        for (k = 0; k < 4; k++) {
+            for (i = 0; i < 10; i++) {
+                $ball = $('<div class="ball"></div>');
+                $ball.css({ "left": 40 + 80 * i, "top": 30 + 55 * k });
+                $ball.text(k * 10 + i + 1);
+
+                $container.append($ball);
+            }
+        }
+        // for (k = 0, n = 1 ; k < 4; k++) {
+        //     for (i = 0; i < 10; i++, n++) {
+        //         $ball = $('<div class="ball"></div>');
+        //         $ball.css({ "left": 40 + 80 * i, "top": 30 + 55 * k });
+        //         $ball.text(n);
+
+        //         $container.append($ball);
+        //     }
+        // }
+        $(".ball").click(function () {
+            //alert($(this).text());
+            $(this).toggleClass("change");
+        });
+
+        $("#st1").hover(function(){
+            $(this).css("fill","#ff1f1f");
+        },function(){
+            $(this).css("fill","#FFFA40");
+        });
+
+        var obj1={
+            name:"Ken",
+            age:18
+        };
+        var obj2={
+            name:"Heren",
+            age:22,
+        }
+        var obj3={
+            name:{firstname:"Gary",lastname:"Asin"},
+            age:26
+        }
+        console.log(obj1.name,obj2['name']);
+        console.log(''+obj1);
+        console.log(obj2);
+        for (var s in obj2) {
+            console.log(s+" : "+obj2[s]);
+        }
+        console.log(obj3.name.firstname, obj3['name']['lastname']);
+    </script>
+
+</body>
+
+</html>

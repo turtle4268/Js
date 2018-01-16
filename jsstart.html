@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaScript</title>
+</head>
+
+<body>
+    <div class="text"></div>
+    <input type="text" id="score">
+    <button>enter</button>
+    <div class="result"></div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <script>
+        for (i = 1; i <= 5; i++) {
+            var n = i;
+            for (x = 1; x <= n; x++) {
+                console.log("*x" + n);
+            }
+        }
+
+        var s = "123abbFGG'\"55x2"
+        var num = 120;
+        var st = "321";
+        var $text = $(".text")
+        console.log(s);
+        $text.append(s);
+
+        $text.append("</br>" + s.toLowerCase());
+        $text.append("</br>" + s.toUpperCase());
+        $text.append("</br>" + s.length);
+        $text.append("</br>" + s.charAt(6));
+        $text.append("</br>" + s.slice(6, 10));
+        $text.append("</br>" + s.indexOf("2"));
+        $text.append("</br>" + s.lastIndexOf("2"));
+        $text.append("</br>" + s.split("2").join("B"));
+        $text.append("</br>" + num.toString(16));
+        $text.append("</br>" + (parseInt(st) + 2));
+
+        
+        var $result = $(".result");
+        
+        $("button").click(function () {
+            var score = parseInt($("#score").val());
+            console.log(score);
+            var v=parseInt($("#score").val()/10);
+            console.log(v);
+            switchs(v);
+        });
+
+        $("#score").on("keyup",function(){
+            $result.text("");
+        });
+
+        function ifs(){
+            if (score >= 90) {
+                $result.text("A");
+            } else if (score >= 80) {
+                $result.text("B");
+            } else if (score >= 70) {
+                $result.text("C");
+            } else if (score >= 60) {
+                $result.text("D");
+            } else {
+                $result.text("F");
+            }
+        }
+        function switchs(s) {
+            switch (s) {
+                case 10:
+                case 9:
+                    $result.text("A");
+                    break;
+                case 8:
+                    $result.text("B");
+                    break;
+                case 7:
+                    $result.text("C");
+                    break;
+                case 6:
+                    $result.text("D");
+                    break;
+                default:
+                    $result.text("F");
+                    break;
+            }
+        }
+
+        var a,b,c;
+        c = (a=0) && (b=3);
+        console.log(a+", "+b+", "+c);
+        c = (a=7) && (b=3);
+        console.log(a+", "+b+", "+c);
+
+        c = (a=0) || (b=3);
+        console.log(a+", "+b+", "+c);
+        c = (a=7) && (b=3);
+        console.log(a+", "+b+", "+c);
+        c = (a=7) && (b=0);
+        console.log(a+", "+b+", "+c);
+
+        var p, age=20 ;
+        p = age>=18　?　"先生"　:　"少年";
+        console.log(p);
+
+        a=10;b=a;b=5;
+        console.log(a,b);
+
+        for (i = 0; i < 10; i++) {
+            console.log(i+1);
+        }
+        for (n = 00; n < 10; n++) {
+            console.log(10-n);
+        }
+
+    </script>
+</body>
+
+</html>
