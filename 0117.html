@@ -19,6 +19,7 @@
             position: absolute ;
             top: 200px ;
             left: 200px ;
+            transform-origin: 0 0 ;
         }
         .secH{
             width: 4px ;
@@ -42,6 +43,22 @@
         crossorigin="anonymous"></script>
     <script>
  
+        var $hand=$(".hand");
+        var lasttime= new Date().getTime();
+       function clock2(){
+           var time=new Date();
+           var seconds=time.getSeconds();
+
+           var i =seconds*6;
+           console.log(seconds);
+           console.log(i);
+            $hand.css("transform","rotate("+i+"deg)");
+        //     if(seconds<10) seconds="0"+seconds;
+        //    $("h2").text(time.getHours()+":"+time.getMinutes()+":"+seconds);
+           setTimeout(clock2,1000);
+       }
+       clock2();
+
     //    function show(text){
     //         $(".container").append(text+'</br>');
     //    }
