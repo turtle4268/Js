@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .clock{
+            width: 400px ;
+            height: 400px ;
+            border-radius: 50% ;
+            background-color: #e7d5b9 ;
+            margin: 0 auto ;
+            position: relative ;
+        }
+        .hand{
+            position: absolute ;
+            top: 200px ;
+            left: 200px ;
+        }
+        .secH{
+            width: 4px ;
+            height: 140px ;
+            background-color: #4d381d ;
+            position: relative ;
+            top:-138px ;
+            left: -2px ;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container"></div>
+    <div class="clock">
+        <div class="hand">
+            <div class="secH"></div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <script>
+ 
+    //    function show(text){
+    //         $(".container").append(text+'</br>');
+    //    }
+    //    var func=(function(){
+    //        var k=0;
+    //        return function(){
+    //            k++;
+    //            show(k);
+    //        }
+    //    })();
+    //    for(i=1;i<=10;i++){
+    //         setTimeout(func,1000*i);
+    //    }
+
+
+    //    var nowdate = new Date();
+    //    console.log(nowdate);
+    //    show(nowdate.getFullYear()+"年"+(nowdate.getMonth()+1)+"月"+nowdate.getDate()+"日");
+
+       /*function count(){
+           var time=new Date();
+           $("h2").text(time.getHours()+":"+time.getMinutes()+":"+time.getSeconds());
+       }
+       count();
+       var clock1=setInterval(count,1000);*/
+
+    //    var lasttime= new Date().getTime();
+    //    function clock2(){
+    //        var time=new Date();
+    //        var seconds=time.getSeconds();
+    //         console.log(time.getTime()-lasttime);
+
+    //         if(seconds<10) seconds="0"+seconds;
+    //        $("h2").text(time.getHours()+":"+time.getMinutes()+":"+seconds);
+    //        setTimeout(clock2,1000);
+
+    //        lasttime=time.getTime();
+    //    }
+    //    clock2();
+    </script>
+
+</body>
+
+</html>
