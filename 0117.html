@@ -12,6 +12,7 @@
             height: 400px ;
             border-radius: 50% ;
             background-color: #e7d5b9 ;
+            background-color: hsl(37, 49%, 82%) ;
             margin: 0 auto ;
             position: relative ;
         }
@@ -80,14 +81,19 @@
            var hours=time.getHours()*30;
            var i=time.getMinutes()/2;
 
-           console.log(seconds);
+           var ms=time.getMilliseconds()/1000*6;
+
+           //console.log(seconds);
         
            $Sec.css("transform","rotate("+seconds+"deg)");
            $Min.css("transform","rotate("+minutes+"deg)");
            $Hor.css("transform","rotate("+(hours+i)+"deg)");
+
+           $(".clock").css("background-color","hsl("+(seconds+ms)+", 49%, 82%)")
         //     if(seconds<10) seconds="0"+seconds;
         //    $("h2").text(time.getHours()+":"+time.getMinutes()+":"+seconds);
-           setTimeout(clock2,1000);
+           //setTimeout(clock2,1000);
+           setTimeout(clock2,30);   //圓滑版
        }
        clock2();
 
