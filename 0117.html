@@ -49,6 +49,18 @@
             top:-158px ;
             left: -2px ;
         }
+        .box{
+            width: 800px ;
+            height: 600px ;
+            background-color: #24202c ;
+            margin: 0 auto ;
+            position: relative ;
+            overflow: hidden ;
+        }
+        .ball{
+            position: absolute ;
+            border-radius: 50% ;
+        }
     </style>
 </head>
 
@@ -65,6 +77,7 @@
             <div class="horH"></div>
         </div>
     </div>
+    <div class="box"></div>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous"></script>
     <script>
@@ -98,6 +111,38 @@
        clock2();
 
     
+       var $box=$(".box");
+       var x,y,$ball,color,size;
+
+       for(i=0;i<100;i++){
+           $ball=$('<div class="ball"></div>');
+           size=parseInt((Math.random()*41))+10;
+           x=Math.floor((800-size)*Math.random());
+           y=parseInt((600-size)*Math.random());
+           color=parseInt(Math.random()*360);
+           $ball.css({
+               left:x,
+               top:y,
+               width:size,
+               height:size,
+               backgroundColor:'hsl('+color+', 96%, 82%)'
+           });
+           $box.append($ball);
+       }
+       $balls=$(".ball");
+       function myLoop(){
+           $balls.each(function(){
+               $(this).css("top","-="+(1+parseInt(Math.random()*6)));
+               $(this).css("left","-="+(2-parseInt(Math.random()*5)));
+
+               if($(this).position().top<-40){
+                    $(this).css("top",600);
+                }
+           });
+           
+            setTimeout(myLoop,30);
+       }
+       myLoop();
     </script>
 
 </body>
