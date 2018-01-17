@@ -21,12 +21,31 @@
             left: 200px ;
             transform-origin: 0 0 ;
         }
+        .horH{
+            width: 8px ;
+            height: 90px ;
+            background-color: #7e5e34 ;
+            border-radius: 4px ;
+            position: relative ;
+            top:-86px ;
+            left: -4px ;
+        }
+        .minH{
+            width: 6px ;
+            height: 120px ;
+            background-color: #6e3d20 ;
+            border-radius: 3px ;
+            position: relative ;
+            top:-117px ;
+            left: -3px ;
+        }
         .secH{
             width: 4px ;
-            height: 140px ;
+            height: 160px ;
             background-color: #4d381d ;
+            border-radius: 2px ;
             position: relative ;
-            top:-138px ;
+            top:-158px ;
             left: -2px ;
         }
     </style>
@@ -35,69 +54,44 @@
 <body>
     <div class="container"></div>
     <div class="clock">
-        <div class="hand">
+        <div class="hand h_sec">
             <div class="secH"></div>
+        </div>
+        <div class="hand h_min">
+            <div class="minH"></div>
+        </div>
+        <div class="hand h_hor">
+            <div class="horH"></div>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous"></script>
     <script>
  
-        var $hand=$(".hand");
+        var $Sec=$(".h_sec");
+        var $Min=$(".h_min");
+        var $Hor=$(".h_hor");
         var lasttime= new Date().getTime();
+
        function clock2(){
            var time=new Date();
-           var seconds=time.getSeconds();
+           var seconds=time.getSeconds()*6;
+           var minutes=time.getMinutes()*6;
+           var hours=time.getHours()*30;
+           var i=time.getMinutes()/2;
 
-           var i =seconds*6;
            console.log(seconds);
-           console.log(i);
-            $hand.css("transform","rotate("+i+"deg)");
+        
+           $Sec.css("transform","rotate("+seconds+"deg)");
+           $Min.css("transform","rotate("+minutes+"deg)");
+           $Hor.css("transform","rotate("+(hours+i)+"deg)");
         //     if(seconds<10) seconds="0"+seconds;
         //    $("h2").text(time.getHours()+":"+time.getMinutes()+":"+seconds);
            setTimeout(clock2,1000);
        }
        clock2();
 
-    //    function show(text){
-    //         $(".container").append(text+'</br>');
-    //    }
-    //    var func=(function(){
-    //        var k=0;
-    //        return function(){
-    //            k++;
-    //            show(k);
-    //        }
-    //    })();
-    //    for(i=1;i<=10;i++){
-    //         setTimeout(func,1000*i);
-    //    }
-
-
-    //    var nowdate = new Date();
-    //    console.log(nowdate);
-    //    show(nowdate.getFullYear()+"年"+(nowdate.getMonth()+1)+"月"+nowdate.getDate()+"日");
-
-       /*function count(){
-           var time=new Date();
-           $("h2").text(time.getHours()+":"+time.getMinutes()+":"+time.getSeconds());
-       }
-       count();
-       var clock1=setInterval(count,1000);*/
-
-    //    var lasttime= new Date().getTime();
-    //    function clock2(){
-    //        var time=new Date();
-    //        var seconds=time.getSeconds();
-    //         console.log(time.getTime()-lasttime);
-
-    //         if(seconds<10) seconds="0"+seconds;
-    //        $("h2").text(time.getHours()+":"+time.getMinutes()+":"+seconds);
-    //        setTimeout(clock2,1000);
-
-    //        lasttime=time.getTime();
-    //    }
-    //    clock2();
+    
     </script>
 
 </body>
