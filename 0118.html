@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="js/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+    <style>
+       
+        .container{
+            width: 500px ;
+            height: 500px ;
+            background-color: #abcf92 ;
+            margin: 0 auto ;
+            position: relative ;
+            border-radius: 50% ;
+        }
+        .ball{
+            width: 50px ;
+            height: 50px ;
+            position: absolute ;
+            border-radius: 50% ;
+            background-color: cornflowerblue ;
+            text-align: center ;
+            line-height: 50px ;
+            font-size: 28px ;
+            color: #FFF ;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="container"></div>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <script src="js/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+    <script>
+ 
+
+    
+       var $container=$(".container");
+       var x,y,$ball;
+       var num = 12;
+       var ang=2*Math.PI/num ;
+
+       for(i=0;i<num;i++){
+           $ball=$('<div class="ball"></div>');
+           
+           x=250+210*Math.cos(i*ang-Math.PI/3)-25;
+           y=250+210*Math.sin(i*ang-Math.PI/3)-25;
+           color=parseInt(Math.random()*360);
+           $ball.css({
+               left:250-25,
+               top:250-25,
+           });
+           $ball.text(i+1);
+           
+           $ball.delay(200*i).animate({left:x,top:y},300,"easeInOutElastic");
+           //$ball.delay(200*i).animate({left:250-25,top:250-25},800);
+           $container.append($ball);
+       }
+
+    </script>
+
+</body>
+
+</html>

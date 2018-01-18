@@ -60,6 +60,11 @@
         .ball{
             position: absolute ;
             border-radius: 50% ;
+            opacity: 1 ;
+        }
+        .hide{
+            opacity: 0 ;
+            /*transition: .5s ;*/
         }
     </style>
 </head>
@@ -143,6 +148,21 @@
             setTimeout(myLoop,30);
        }
        myLoop();
+    //    $balls.on("mouseover",function(){
+    //         $(this).addClass("hide");
+    //     },"mouseout",function(){
+    //         $(this).removeClass("hide");
+    //     });
+        $balls.mouseover(function(){
+            $(this).addClass("hide");
+        }).mouseout(function(){
+            $(this).removeClass("hide");
+        });
+    // $balls.hover(function(){
+    //     $(this).addClass("hide");
+    // },function(){
+    //     $(this).removeClass("hide");
+    // });
     </script>
 
 </body>
