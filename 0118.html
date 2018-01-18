@@ -28,12 +28,31 @@
             font-size: 28px ;
             color: #FFF ;
         }
-        
+        .btn{
+            width: 80px ;
+            height: 80px ;
+            position: absolute ;
+            border-radius: 50% ;
+            background-color: #583dbb ;
+            text-align: center ;
+            line-height: 80px ;
+            font-size: 28px ;
+            color: #FFF ;
+            top: 210px ;
+            left: 210px ;
+            cursor: pointer ;
+            z-index: 5;
+        }
+        .btn.act{
+            background-color: crimson ;
+        }
     </style>
 </head>
 
 <body>
-    <div class="container"></div>
+    <div class="container">
+        <div class="btn">Menu</div>
+    </div>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous"></script>
     <script src="js/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
@@ -45,24 +64,59 @@
        var x,y,$ball;
        var num = 12;
        var ang=2*Math.PI/num ;
+       var balls=[];
+       var ifact=0;
+       var $btn=$(".btn");
 
        for(i=0;i<num;i++){
            $ball=$('<div class="ball"></div>');
            
-           x=250+210*Math.cos(i*ang-Math.PI/3)-25;
-           y=250+210*Math.sin(i*ang-Math.PI/3)-25;
+           x=250+parseInt(210*Math.cos(i*ang-Math.PI/3))-25;
+           y=250+parseInt(210*Math.sin(i*ang-Math.PI/3))-25;
            color=parseInt(Math.random()*360);
            $ball.css({
                left:250-25,
                top:250-25,
            });
            $ball.text(i+1);
-           
-           $ball.delay(200*i).animate({left:x,top:y},300,"easeInOutElastic");
+        
+           $ball.attr('data-bx', 225);
+            $ball.attr('data-by', 225);
+            $ball.attr('data-ex', x);
+            $ball.attr('data-ey', y);
+           //$ball.delay(200*i).animate({left:x,top:y},300,"easeInOutElastic");
            //$ball.delay(200*i).animate({left:250-25,top:250-25},800);
            $container.append($ball);
+           balls.push($ball);
        }
 
+       $btn.click(function(){
+           //$(this).toggleClass("act");
+           //console.log($btn.hasClass("act"));
+           if((!$btn.hasClass("act"))&&ifact==0){
+                $btn.addClass("act");
+               balls.forEach(function(ball,i){
+                    var x = ball.attr('data-ex');
+                    var y = ball.attr('data-ey');
+                    ball.delay(100*i).animate({left:x,top:y},300,"easeInOutBack",function(){
+                        ifact++;
+                        console.log(ifact) ;
+                    });
+                });
+                
+           }else if($btn.hasClass("act")&&ifact==num){
+                $btn.removeClass("act");
+                balls.forEach(function(ball,i){
+                    var x = ball.attr('data-bx');
+                    var y = ball.attr('data-by');
+                    ball.delay(100*(11-i)).animate({left:x,top:y},300,"easeInOutBack",function(){
+                        ifact-- ;
+                    });
+                });
+                
+           }
+           //console.log(ifact) ;
+       });
     </script>
 
 </body>
