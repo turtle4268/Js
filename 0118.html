@@ -90,33 +90,36 @@
            balls.push($ball);
        }
 
-       $btn.click(function(){
-           //$(this).toggleClass("act");
-           //console.log($btn.hasClass("act"));
-           if((!$btn.hasClass("act"))&&ifact==0){
-                $btn.addClass("act");
+       var funClick = function(){
+          $btn.off('click',funClick);
+          if((!$btn.hasClass("act"))){
+               $btn.addClass("act");
+              balls.forEach(function(ball,i){
+                   var x = ball.attr('data-ex');
+                   var y = ball.attr('data-ey');
+                   ball.delay(70*i).animate({left:x,top:y},120,"easeInOutBack",function(){
+                       ifact++;
+                       console.log(ifact) ;
+                   });
+               });
+               
+          }else if($btn.hasClass("act")){
+               $btn.removeClass("act");
                balls.forEach(function(ball,i){
-                    var x = ball.attr('data-ex');
-                    var y = ball.attr('data-ey');
-                    ball.delay(70*i).animate({left:x,top:y},120,"easeInOutBack",function(){
-                        ifact++;
-                        console.log(ifact) ;
-                    });
-                });
-                
-           }else if($btn.hasClass("act")&&ifact==num){
-                $btn.removeClass("act");
-                balls.forEach(function(ball,i){
-                    var x = ball.attr('data-bx');
-                    var y = ball.attr('data-by');
-                    ball.delay(70*(num-1-i)).animate({left:x,top:y},120,"easeInOutBack",function(){
-                        ifact-- ;
-                    });
-                });
-                
-           }
-           //console.log(ifact) ;
-       });
+                   var x = ball.attr('data-bx');
+                   var y = ball.attr('data-by');
+                   ball.delay(70*(num-1-i)).animate({left:x,top:y},120,"easeInOutBack",function(){
+                       ifact-- ;
+                   });
+               });
+          }
+          //console.log(ifact) ;
+          setTimeout(function(){
+                $btn.on('click',funClick);
+          },1000);
+      };
+
+       $btn.on('click',funClick);
     </script>
 
 </body>
