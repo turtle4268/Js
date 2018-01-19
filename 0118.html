@@ -98,7 +98,7 @@
                balls.forEach(function(ball,i){
                     var x = ball.attr('data-ex');
                     var y = ball.attr('data-ey');
-                    ball.delay(100*i).animate({left:x,top:y},300,"easeInOutBack",function(){
+                    ball.delay(70*i).animate({left:x,top:y},120,"easeInOutBack",function(){
                         ifact++;
                         console.log(ifact) ;
                     });
@@ -109,7 +109,7 @@
                 balls.forEach(function(ball,i){
                     var x = ball.attr('data-bx');
                     var y = ball.attr('data-by');
-                    ball.delay(100*(11-i)).animate({left:x,top:y},300,"easeInOutBack",function(){
+                    ball.delay(70*(num-1-i)).animate({left:x,top:y},120,"easeInOutBack",function(){
                         ifact-- ;
                     });
                 });

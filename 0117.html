@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Clock and Balls</title>
     <style>
         .clock{
             width: 400px ;
@@ -122,8 +122,8 @@
        for(i=0;i<100;i++){
            $ball=$('<div class="ball"></div>');
            size=parseInt((Math.random()*41))+10;
-           x=Math.floor((800-size)*Math.random());
-           y=parseInt((600-size)*Math.random());
+           x=Math.floor(800*Math.random());
+           y=parseInt(600*Math.random());
            color=parseInt(Math.random()*360);
            $ball.css({
                left:x,
@@ -140,29 +140,29 @@
                $(this).css("top","-="+(1+parseInt(Math.random()*6)));
                $(this).css("left","-="+(2-parseInt(Math.random()*5)));
 
-               if($(this).position().top<-40){
-                    $(this).css("top",600);
+            //    if($(this).position().top<-40){
+            //         $(this).css("top",640);
+            //     }
+                if(parseInt($(this).css('top')) < -50){
+                    $(this).css('top', 650);
+                    $(this).show();
                 }
            });
            
             setTimeout(myLoop,30);
        }
        myLoop();
-    //    $balls.on("mouseover",function(){
-    //         $(this).addClass("hide");
-    //     },"mouseout",function(){
-    //         $(this).removeClass("hide");
-    //     });
-        $balls.mouseover(function(){
-            $(this).addClass("hide");
-        }).mouseout(function(){
-            $(this).removeClass("hide");
+       
+        $balls.on('mouseover', function(){
+            $(this).fadeOut(200);
         });
-    // $balls.hover(function(){
-    //     $(this).addClass("hide");
-    // },function(){
-    //     $(this).removeClass("hide");
-    // });
+
+        // $balls.mouseover(function(){
+        //     $(this).addClass("hide");
+        // }).mouseout(function(){
+        //     $(this).removeClass("hide");
+        // });
+  
     </script>
 
 </body>
