@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="js/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        #container {
+            position: relative;
+            width: 800px;
+            height: 600px;
+            background-color: aquamarine;
+            left: 100px;
+            top: 50px;
+            /*overflow: hidden;*/
+        }
+
+        .rect {
+            position: absolute;
+            width: 300px;
+            height: 200px;
+            background-color: #4dff32;
+            border: 1px solid black;
+            border-radius: 20px;
+            left: 100px;
+            top: 100px;
+        }
+
+        .ball {
+            position: absolute;
+
+            width: 100px;
+            height: 100px;
+            background-color: #ff8b5b;
+            border: 1px solid black;
+            border-radius: 50%;
+            color: white;
+            line-height: 40px;
+            text-align: center;
+            left: 60px;
+            top: 70px;
+
+            /*pointer-events: none ;/*略過滑鼠事件*/
+        }
+        #tex{
+            position: fixed ;
+            bottom: 5px ;
+            left: 10px ;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="b1">1</button>
+    <button id="b2" onclick="fun(event)">2</button>
+    <button id="b3">3</button>
+
+    <div id="container">
+        <div class="rect">
+            <div class="ball"></div>
+        </div>
+    </div>
+    <textarea name="" id="tex" cols="30" rows="10"></textarea>
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <script src="js/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+    
+    <script>
+ 
+        $("#b1").click(function(evt){
+            console.log(evt);
+        });
+
+        function fun(evt){
+            console.log(evt);
+        }
+    
+
+        var b3 = document.querySelector('#b3');
+        var b3Handler = function(evt){
+            console.log(evt);
+        };
+
+        b3.addEventListener('click', b3Handler);
+        // b3.removeEventListener('click')
+
+
+        var c=$("#container");
+        var r=$(".rect");
+        var b=$(".ball");
+        var txt=$("#tex");
+        var handler=function(e){
+            console.log(e);
+            txt.val(
+                e.offsetX+','+ e.offsetY+'\n'+
+                e.clientX+','+ e.clientY+'\n'+
+                e.pageX+','+ e.pageY
+            );
+        };
+
+        // c.click(function(evt){
+        //     console.log('c');
+        // });
+        // r.click(function(evt){
+        //     console.log('r');
+        // });
+        // b.click(function(evt){
+        //     // evt.stopPropagation();
+        //     console.log('b');
+        // });
+
+        c.click(handler);
+        r.click(handler);
+        b.click(handler);
+
+        //c.on('mousemove', handler);
+        c.on('mouseover', handler);
+
+    </script>
+
+</body>
+
+</html>

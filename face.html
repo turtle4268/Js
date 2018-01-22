@@ -1,0 +1,90 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .face {
+            margin: 0 auto ;
+            position: relative ;
+            width: 500px;
+            height: 500px;
+            background-color: #e6ceaf;
+            border-radius: 50%;
+        }
+
+        .eye {
+            position: absolute;
+        }
+
+        .eye-white {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: #ffffff;
+            /*border: 1px solid black;*/
+            border-radius: 50%;
+
+            left: -50px;
+            top: -50px;
+        }
+        .eye-black {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: #501a08;
+            /*border: 1px solid black;*/
+            border-radius: 50%;
+            left: 0px;
+            top: -25px;
+        }
+    </style>
+
+</head>
+<body>
+<div class="face">
+    <div class="eye" style="left: 150px; top: 200px; transform: rotate(-0deg);">
+        <div class="eye-white"></div>
+        <div class="eye-black"></div>
+    </div>
+    <div class="eye" style="left: 350px; top: 200px; transform: rotate(-0deg);">
+        <div class="eye-white"></div>
+        <div class="eye-black"></div>
+    </div>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+<script>
+    var cx=document.body.offsetWidth/2;
+    var cy=document.body.offsetHeight/2;
+    $(document).ready(function(){
+        $(window).resize(function() {
+            cx=$(window).width()/2;
+            cy=$(window).height()/2;
+            console.log(cx,cy);
+        });
+    });
+
+    $(window).on('mousemove', function(event){
+
+        var dx = event.pageX - cx;
+        var dy = event.pageY - 200;
+
+        var ang = Math.round( Math.atan2(dy, dx)/Math.PI*180 );
+
+        $('.eye').css('transform', 'rotate('+ang+'deg)');
+
+    });
+
+
+</script>
+
+
+
+</body></html>
