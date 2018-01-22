@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="js/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+    <style>
+       
+        .container{
+            width: 500px ;
+            height: 500px ;
+            background-color: #abcf92 ;
+            margin: 0 auto ;
+            position: relative ;
+            border-radius: 50% ;
+        }
+        .ball{
+            width: 50px ;
+            height: 50px ;
+            position: absolute ;
+            border-radius: 50% ;
+            background-color: cornflowerblue ;
+            text-align: center ;
+            line-height: 50px ;
+            font-size: 28px ;
+            color: #FFF ;
+        }
+        .btn{
+            width: 80px ;
+            height: 80px ;
+            position: absolute ;
+            border-radius: 50% ;
+            background-color: #583dbb ;
+            text-align: center ;
+            line-height: 80px ;
+            font-size: 28px ;
+            color: #FFF ;
+            top: 210px ;
+            left: 210px ;
+            cursor: pointer ;
+            z-index: 5;
+        }
+        .btn.act{
+            background-color: crimson ;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="btn">Menu</div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <script src="js/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+    <script src="js/detectmobilebrowser.js"></script>
+    <script>
+ 
+
+    
+       var $container=$(".container");
+       var x,y,$ball;
+       var num = 12;
+       var ang=2*Math.PI/num ;
+       var balls=[];
+       var ifact=0;
+       var $btn=$(".btn");
+
+      
+
+       $btn.click(function(){
+            alert($.browser.mobile);
+        });
+    </script>
+
+</body>
+
+</html>
