@@ -41,19 +41,29 @@
             left: 0px;
             top: -25px;
         }
+        .mouse{
+            width: 200px ;
+            height: 80px ;
+            border-radius: 50% ;
+            background-color: #F00 ;
+            margin: 0 auto ;
+            position: relative ;
+            top: 330px ;
+        }
     </style>
 
 </head>
 <body>
 <div class="face">
-    <div class="eye" style="left: 150px; top: 200px; transform: rotate(-0deg);">
+    <div class="eye eye_l" style="left: 150px; top: 200px; transform: rotate(-0deg);">
         <div class="eye-white"></div>
         <div class="eye-black"></div>
     </div>
-    <div class="eye" style="left: 350px; top: 200px; transform: rotate(-0deg);">
+    <div class="eye eye_r" style="left: 350px; top: 200px; transform: rotate(-0deg);">
         <div class="eye-white"></div>
         <div class="eye-black"></div>
     </div>
+    <div class="mouse"></div>
 </div>
 
 
@@ -71,14 +81,29 @@
         });
     });
 
+    var eyes=$(".eye");
     $(window).on('mousemove', function(event){
 
-        var dx = event.pageX - cx;
+        eyes.each(function(){
+            var dx = event.pageX - cx + (250-$(this).position().left);
+            var dy = event.pageY - $(this).position().top;
+
+            var ang = Math.round( Math.atan2(dy, dx)/Math.PI*180 );
+
+            
+
+            $(this).css('transform', 'rotate('+ang+'deg)');
+        });
+
+        /*var dxl = event.pageX - cx + 100;
+        var dxr = event.pageX - cx - 100;
         var dy = event.pageY - 200;
 
-        var ang = Math.round( Math.atan2(dy, dx)/Math.PI*180 );
+        var angl = Math.round( Math.atan2(dy, dxl)/Math.PI*180 );
+        var angr = Math.round( Math.atan2(dy, dxr)/Math.PI*180 );
 
-        $('.eye').css('transform', 'rotate('+ang+'deg)');
+        $('.eye_l').css('transform', 'rotate('+angl+'deg)');
+        $('.eye_r').css('transform', 'rotate('+angr+'deg)');*/
 
     });
 

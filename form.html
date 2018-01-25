@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="js/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <form action="" method="post" onsubmit="return check()">
+        <label for="username">帳號</label>
+        <input type="text" name="username" id="username"><br>
+        <label for="password">密碼</label>
+        <input type="password" name="password" id="password"><br>
+        <label for="">性別</label>
+        <input type="radio" name="gender" id="male"><label for="male">男</label>
+        <input type="radio" name="gender" id="female"><label for="female">女</label><br>
+        <input type="checkbox" name="remeber" id="remeber"><label for="remeber">記住帳號</label><br>
+        <input type="submit" >
+        
+    </form>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <script src="js/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+    <script src="js/detectmobilebrowser.js"></script>
+    <script>
+ 
+        function check(){
+            var username=$("#username");
+            var password=$("#password");
+
+            if(!username.val().trim()) {
+                alert("請填入帳號");
+                return false ;
+            }else if(!password.val().trim()) {
+                alert("請填入密碼");
+                return false ;
+            }else{
+                return true ;
+            }
+            
+        }
+
+
+    
+      
+    </script>
+
+</body>
+
+</html>
